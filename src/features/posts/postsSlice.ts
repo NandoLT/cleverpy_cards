@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction  } from '@reduxjs/toolkit';
 import type { RootState } from '../../App/store';
-import { getPosts } from '../../dataService/posts/posts';
+import { Posts } from '../../api/posts/posts';
+import { PostType }from '../../types';
 
 
 interface PostsState {
-    postList: Array<Object>
+    postList: Array<PostType>
     status: string
 }
 
@@ -15,8 +16,9 @@ const initialState: PostsState = {
 
 // Thunk functions 
 export const fetchPosts = createAsyncThunk('get/allPosts', async () => {
-    const { data } = await getPosts();
-    return data.result
+    const response = await Posts.getPosts();
+    console.log('RESPONSE', response)
+    return response;
 });
 
 // Create Slice
