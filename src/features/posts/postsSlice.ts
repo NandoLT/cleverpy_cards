@@ -9,6 +9,10 @@ interface PostsState {
     status: string
 }
 
+interface PostUpdate {
+    id:number
+    body:string
+}
 const initialState: PostsState = {
     postList: [],
     status: 'idle'
@@ -27,10 +31,15 @@ export const postsSlice = createSlice({
     initialState,
     reducers: {
         deletePost: (state: PostsState, action: PayloadAction<number>) => {
-            console.log('DELETE POST');
+            state.postList =  state.postList.filter(post => post.id !== action.payload);
         },
-        updatePost: (state: PostsState, action: PayloadAction<number>) => {
-            console.log('UPDATE POST');
+        updatePost: (state: PostsState, action: PayloadAction<PostUpdate>) => {
+            const { payload } = action;
+            const { id, body } = payload;
+            state.postList = state.postList.map(post =>{
+                if(post.id === id) { return{...post, body: body }}
+                return post;
+            })
         }
     },
     extraReducers: builder => {

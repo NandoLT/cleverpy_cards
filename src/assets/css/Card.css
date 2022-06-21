@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Raleway:wght@300&family=Roboto+Condensed:wght@300&display=swap');
-
 /*
     CardContainer component
 */
@@ -13,26 +11,13 @@
     Card component
 */
 .Card-item {
-    /* flex: 0 0 20%; */
     width: 90%;
-    /* border: 1px solid grey; */
     padding: 10px;
     border-radius: 20px;
     margin-bottom: 20px;
     background-color: white;
     box-shadow: 0px 0px 8px rgba(97, 97, 97, 0.651);
 }
-
-/* @media(max-width: 1400px) {
-    .Card-item {
-        flex: 0 0 40%;
-    }
-}
-@media(max-width: 750px) {
-    .Card-item {
-        flex: 0 0 90%;
-    }
-} */
 
 .Card-item__title {
     border-bottom: 2px solid grey;
@@ -68,6 +53,23 @@
     text-transform: capitalize;
 }
 
+.post-edition {
+    width: 100%;
+    overflow: auto;
+    height: auto;
+    text-align: justify;
+    font-size:larger;
+    font-family: 'Raleway', sans-serif;
+    resize: vertical;
+    min-height: 80px;
+    max-height: 150px;
+    line-height: 30px;
+    display: block;
+    margin-bottom: 10px;
+    word-spacing: 3px;
+    padding: 20px 0px 15px 10px;
+}
+
 /*
     ActionsCard component
 */
@@ -98,3 +100,5 @@
     margin-left: 10px;
     transition: all 0.5s;
 }
+
+
