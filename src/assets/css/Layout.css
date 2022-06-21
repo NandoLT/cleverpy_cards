@@ -1,0 +1,12 @@
+
+.layout {
+    background-color: #e2e2e2c2;
+}
+
+.layout-main {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    margin: 0 auto;
+    max-width: 95%;
+    padding-top: 30px;
+}

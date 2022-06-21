@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { CardsContainer } from '../components/Pages/Home/CardsContainer';
 import { LoginCotainer } from '../components/Pages/Login/LoginCotainer';
 import { NotFound } from '../components/commons/NotFound';
+import Layout from '../components/commons/layout/Layout';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/App.css';
@@ -11,26 +12,30 @@ import '../assets/css/App.css';
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route 
-          path="/"
-          element={ <CardsContainer />}
-        />
+      <Layout>
+        <Routes>
+          <Route 
+            path="/"
+            element={ <CardsContainer />}
+          />
+
+          <Route 
+            path="/404" 
+            element={ <NotFound /> }
+          />
+
+          <Route 
+            path="*" 
+            element={ <Navigate to='404' /> } 
+          />
 
         <Route 
           path="/login"
           element={ <LoginCotainer />}
-        />
-
-        <Route 
-          path="/404" 
-          element={ <NotFound /> }
-        />
-
-        <Route 
-          path="*" 
-          element={ <Navigate to='404' /> } />
-      </Routes>
+          />
+        
+        </Routes>
+      </Layout>
 
       <ToastContainer
         hideProgressBar={false}

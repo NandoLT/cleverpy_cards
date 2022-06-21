@@ -19,13 +19,13 @@ export const Card = ({postsInfo}: Props) => {
                             {post.title}
                         </div>    
                         <div className="Card-item__userInfo">
-                            <div className="userInfo__userId">{post.userId}</div>
-                            <div className="userInfo__postId">{post.id}</div>
+                            <div className="userInfo__userId">User ID: {post.userId}</div>
+                            <div className="userInfo__postId">Post ID: {post.id}</div>
                         </div>    
                         <div className="Card-item__body">
                             {post.body}
                         </div>
-                        <ActionsCard />    
+                        <ActionsCard postId={post.id}/>    
                     </div>
                     )
                 })
