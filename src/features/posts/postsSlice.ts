@@ -21,7 +21,6 @@ const initialState: PostsState = {
 // Thunk functions 
 export const fetchPosts = createAsyncThunk('get/allPosts', async () => {
     const response = await Posts.getPosts();
-    console.log('RESPONSE', response)
     return response;
 });
 
