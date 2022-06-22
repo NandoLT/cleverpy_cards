@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { LoginForm } from './LoginForm'
 import { toast } from 'react-toastify';
 import { useNavigate  } from 'react-router-dom';
 import storage from '../../../utils/storage';
+import { useAppSelector, useAppDispatch } from '../../../App/hooks';
+import { setAuthorization, selectAuth } from '../../../features/authorization/authSlice';
 
 interface credentialsState {
   email: string
   password: string
 }
 
-interface Props {
-  isLogged: boolean
-}
+export const Login = () => {
 
-export const Login = ({isLogged}:Props) => {
+  const isLogged = useAppSelector(selectAuth);
 
   const navigate = useNavigate ();
+  const dispatch = useAppDispatch();
 
   const launchToast = (error:string) => {
     toast.error(error, {
@@ -37,7 +38,7 @@ export const Login = ({isLogged}:Props) => {
 
     if(email === 'fernando@cleverpy.com' && password === '12345') { 
       storage.set('auth', true);  
-      window.location.reload();
+      dispatch(setAuthorization(storage.get('auth')));
     }
     if(email !== 'fernando@cleverpy.com' || password !== '12345') { launchToast('User email or password not valid')}
   }

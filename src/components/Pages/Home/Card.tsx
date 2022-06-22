@@ -1,14 +1,13 @@
-import React,{useState} from 'react'
+import React,{ useState } from 'react'
 import { PostType } from '../../../types';
 import UseAnimations from "react-useanimations";
 import trash from 'react-useanimations/lib/trash2';
 import { GrEdit } from 'react-icons/gr';
-import {Modal, Box, Button} from '@mui/material';
+import { Modal, Box, Button } from '@mui/material';
 import { useAppDispatch } from '../../../App/hooks';
 import { deletePost, updatePost } from '../../../features/posts/postsSlice';
 
 import '../../../assets/css/ModalAdvisor.css';
-
 
 interface Props {
     postsInfo: Array<PostType>
@@ -74,12 +73,10 @@ export const Card = ({postsInfo}: Props) => {
                                 `Are you sure you want to ${action} post with id: ${id}`
                                 : 
                                 null,
-                                // <div>UPDATE</div>,
             actionButton: action === 'delete' ?
                                         <Button variant='contained' color="error" onClick={() => deleteItem(id)}>DELETE</Button> 
                                         : 
                                         null,
-                                        // <Button variant='contained' color="success" onClick={() => activateEdition(id)}>UPDATE</Button>,
             visibility: true
         })
     }
@@ -125,8 +122,7 @@ export const Card = ({postsInfo}: Props) => {
                 </Box>
             </Modal>
 
-            {postsInfo.length > 0 ?
-                postsInfo.map (post => {
+            {postsInfo.map (post => {
                     return (
                         <div className="Card-item" key={post.id}>
                             <div className="Card-item__title">
@@ -158,8 +154,6 @@ export const Card = ({postsInfo}: Props) => {
                         </div>
                         )
                     })
-                    :
-                    <h2>Actually there aren`t any post</h2>
             }
         </>
     )

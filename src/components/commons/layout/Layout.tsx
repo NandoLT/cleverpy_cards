@@ -10,7 +10,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
     return(
     <div className="layout">
-        <Header />
+        <Header/>
         <main className="layout-main bordered">
             <section className="layout-content">
               {children}

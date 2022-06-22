@@ -1,8 +1,8 @@
 const storage = {
-    get(key:string):Object | null  {
+    get(key:string):boolean   {
         const value = localStorage.getItem(key);
         if (!value) {
-            return null;
+            return false;
         }
         return JSON.parse(value);
     },

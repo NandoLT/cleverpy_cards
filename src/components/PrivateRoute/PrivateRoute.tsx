@@ -1,11 +1,12 @@
 import { Navigate } from 'react-router-dom';
+import { selectAuth } from '../../features/authorization/authSlice';
+import { useAppSelector } from '../../App/hooks';
 
 interface Props {
-    isLogged: boolean
     component: React.FunctionComponent
 }
-const PrivateRoute = ({ isLogged, component }: Props) => {
-
+const PrivateRoute = ({ component }: Props) => {
+    const isLogged = useAppSelector(selectAuth);
     const RouteComponent = component;
     return isLogged ? <RouteComponent /> : <Navigate to="/login" />;
 }
