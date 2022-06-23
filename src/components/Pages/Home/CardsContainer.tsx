@@ -35,17 +35,6 @@ export const CardsContainer = () => {
             </div>}
       </div>
         }
-      {/* <div className='card-container'>
-        { isLoading && <Loader />}
-        {
-          posts.length > 0 ?
-            <Card postsInfo={posts}/>
-            :
-            <div>
-              <h2>No Post availables</h2>
-            </div>
-        }
-      </div> */}
     </>
   )
 }

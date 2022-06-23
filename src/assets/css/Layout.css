@@ -1,7 +1,6 @@
 
 .layout {
-    background-color: #e2e2e2c2;
-    height: auto;
+    height: inherit;
 }
 
 .layout-main {
