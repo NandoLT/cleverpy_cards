@@ -105,6 +105,7 @@ export const Card = ({postsInfo}: Props) => {
         <>
 
             <Modal
+                role='modal'
                 className='advertModal'
                 hideBackdrop
                 open={modalState.visibility}
@@ -122,39 +123,45 @@ export const Card = ({postsInfo}: Props) => {
                 </Box>
             </Modal>
 
-            {postsInfo.map (post => {
-                    return (
-                        <div className="Card-item" key={post.id}>
-                            <div className="Card-item__title">
-                                {post.title}
-                            </div>    
-                            <div className="Card-item__userInfo">
-                                <div className="userInfo__userId">User ID: {post.userId}</div>
-                                <div className="userInfo__postId">Post ID: {post.id}</div>
-                            </div>    
-                            <div className="Card-item__body">
-                                {openEdit.edition && post.id === openEdit.postid?
-                                    <>
-                                        <textarea defaultValue={post.body} onChange={handleChangeEdition} className="post-edition"></textarea>
-                                        <Button onClick={() => updateItem(post.id)} variant='contained' color="success"> UPDATE</Button>
-                                        <Button onClick={() => activateEdition(post.id)} variant='contained'> CANCEL</Button>
-                                    </>
-                                    :
-                                    post.body
-                                }   
+            {
+                postsInfo.length > 0 ?
+                    postsInfo.map (post => {
+                            return (
+                                <div className="Card-item" key={post.id} role="article">
+                                    <div className="Card-item__title">
+                                        {post.title}
+                                    </div>    
+                                    <div className="Card-item__userInfo">
+                                        <div className="userInfo__userId">User ID: {post.userId}</div>
+                                        <div className="userInfo__postId">Post ID: {post.id}</div>
+                                    </div>    
+                                    <div className="Card-item__body">
+                                        {openEdit.edition && post.id === openEdit.postid?
+                                            <>
+                                                <textarea defaultValue={post.body} onChange={handleChangeEdition} className="post-edition"></textarea>
+                                                <Button onClick={() => updateItem(post.id)} variant='contained' color="success"> UPDATE</Button>
+                                                <Button onClick={() => activateEdition(post.id)} variant='contained'> CANCEL</Button>
+                                            </>
+                                            :
+                                            post.body
+                                        }   
+                                    </div>
+                                    <div className="Container-actions">
+                                        <button data-testid={'delete-button'} onClick={() => handleModalState('delete', post.id)}>
+                                            <UseAnimations animation={trash} className="trash-icon" />
+                                        </button>
+                                        <button onClick={() => activateEdition(post.id)}>
+                                            <GrEdit className="pencil-icon"/>
+                                        </button>
+                                    </div>
+                                </div>
+                                )
+                            })
+                            :
+                            <div>
+                                <h2>No Post availables</h2>
                             </div>
-                            <div className="Container-actions">
-                                <button onClick={() => handleModalState('delete', post.id)}>
-                                    <UseAnimations animation={trash} className="trash-icon" />
-                                </button>
-                                <button onClick={() => activateEdition(post.id)}>
-                                    <GrEdit className="pencil-icon"/>
-                                </button>
-                            </div>
-                        </div>
-                        )
-                    })
-            }
+                }
         </>
     )
 }

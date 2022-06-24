@@ -24,16 +24,12 @@ export const CardsContainer = () => {
 
   return (
     <>
-        { isLoading ? <Loader />
+        { isLoading ? 
+          <Loader />
           :        
-      <div className='card-container'>
-          {posts.length > 0 ?
-            <Card postsInfo={posts}/>
-            :
-            <div>
-              <h2>No Post availables</h2>
-            </div>}
-      </div>
+          <div className='card-container'>
+              <Card postsInfo={posts}/>
+          </div>
         }
     </>
   )
