@@ -29,7 +29,7 @@ $~ npm  start
 ### Run Unit Tests
 Run command: 
 ```
-__npm run test__
+$~ npm run test
 ```
 RESULT:
 ```
@@ -55,7 +55,7 @@ Time:        5.363 s
 ### Run e2e Tests
 Run command: 
 ```
-__npm run cypress:open__
+$~ npm run cypress:open
 ```
 
 ## IMPROVEMENTS POINTS
