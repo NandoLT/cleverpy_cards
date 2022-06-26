@@ -27,7 +27,10 @@ $~ npm  start
 
 ## RUN TESTS
 ### Run Unit Tests
-Run command: __npm run test__
+Run command: 
+```
+__npm run test__
+```
 RESULT:
 ```
 $~ npm run test
@@ -50,7 +53,10 @@ Time:        5.363 s
 
 ```
 ### Run e2e Tests
-Run command: __npm run cypress:open__
+Run command: 
+```
+__npm run cypress:open__
+```
 
 ## IMPROVEMENTS POINTS
  * Infinite Scroll and Lazy Loading or Pagination.
