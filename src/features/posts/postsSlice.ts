@@ -51,7 +51,7 @@ export const postsSlice = createSlice({
                 state.postList = action.payload;
             })
             .addCase(fetchPosts.rejected, (state) => {
-                state.status = 'loading';
+                state.status = 'rejected';
             })
     }
 });

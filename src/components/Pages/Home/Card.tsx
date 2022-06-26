@@ -126,6 +126,7 @@ export const Card = ({postsInfo}: Props) => {
             {
                 postsInfo.length > 0 ?
                     postsInfo.map (post => {
+                        post = {...post, body : post.body.replace('\n', ' ')}
                             return (
                                 <div className="Card-item" key={post.id} role="article">
                                     <div className="Card-item__title">
@@ -139,7 +140,7 @@ export const Card = ({postsInfo}: Props) => {
                                         {openEdit.edition && post.id === openEdit.postid?
                                             <>
                                                 <textarea defaultValue={post.body} onChange={handleChangeEdition} className="post-edition"></textarea>
-                                                <Button onClick={() => updateItem(post.id)} variant='contained' color="success"> UPDATE</Button>
+                                                <Button style={{marginRight:'20px'}} onClick={() => updateItem(post.id)} variant='contained' color="success"> UPDATE</Button>
                                                 <Button onClick={() => activateEdition(post.id)} variant='contained'> CANCEL</Button>
                                             </>
                                             :
