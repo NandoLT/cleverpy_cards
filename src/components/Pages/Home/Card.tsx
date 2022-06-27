@@ -6,6 +6,7 @@ import { GrEdit } from 'react-icons/gr';
 import { Modal, Box, Button } from '@mui/material';
 import { useAppDispatch } from '../../../App/hooks';
 import { deletePost, updatePost } from '../../../features/posts/postsSlice';
+import { toast } from 'react-toastify';
 
 import '../../../assets/css/ModalAdvisor.css';
 
@@ -59,6 +60,17 @@ export const Card = ({postsInfo}: Props) => {
     const [openEdit, setOpenEdit] = useState(initialOpenEdit);
     const [editionValue, setEditionValue] = useState('');
 
+    const launchToast = (message:string) => {
+        toast.info(message, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined,
+        }); 
+    }
+
     const handleOpenClose = () => {
         setModalState({
             ...modalState, 
@@ -83,6 +95,7 @@ export const Card = ({postsInfo}: Props) => {
     
     const deleteItem = (id:number) => {
         dispatch(deletePost(id));
+        launchToast('Temporary delete operation. No data permanence');
         setModalState(initialModalState);
     }
 
@@ -98,6 +111,7 @@ export const Card = ({postsInfo}: Props) => {
     }
     const updateItem = (id:number) => {
         dispatch(updatePost({id, body:editionValue}));
+        launchToast('Temporary update operation. No data permanence');
         activateEdition(id);
     }
 
@@ -160,7 +174,7 @@ export const Card = ({postsInfo}: Props) => {
                             })
                             :
                             <div>
-                                <h2>No Post availables</h2>
+                                <h2>No Posts available</h2>
                             </div>
                 }
         </>

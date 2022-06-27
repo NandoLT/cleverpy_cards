@@ -3,7 +3,7 @@ import cleverPyLogo from '../../../assets/images/cleverpy.png';
 import { Button } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../../App/hooks';
 import { selectAuth } from '../../../features/authorization/authSlice';
-import { logOut } from '../../../features/authorization/authSlice'
+import { setAuthorization } from '../../../features/authorization/authSlice'
 import storage from '../../../utils/storage';
 
 import '../../../assets/css/Header.css';
@@ -15,7 +15,7 @@ const Header = () => {
 
     const handleLogOut = () => {
         storage.set('auth', false);
-        dispatch(logOut(false))
+        dispatch(setAuthorization(false))
     }
 
     return (

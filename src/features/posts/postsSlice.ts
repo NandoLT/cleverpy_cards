@@ -35,10 +35,7 @@ export const postsSlice = createSlice({
         updatePost: (state: PostsState, action: PayloadAction<PostUpdate>) => {
             const { payload } = action;
             const { id, body } = payload;
-            state.postList = state.postList.map(post =>{
-                if(post.id === id) { return{...post, body: body }}
-                return post;
-            })
+            state.postList = state.postList.map(post => post.id === id ? ({...post, body}) : post);
         }
     },
     extraReducers: builder => {

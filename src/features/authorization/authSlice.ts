@@ -20,12 +20,9 @@ export const authSlice = createSlice({
         setAuthorization: (state:AuthState, action: PayloadAction<boolean>) => {
             state.auth = action.payload;
         },
-        logOut: (state:AuthState, action: PayloadAction<boolean>) => {
-            state.auth = action.payload;
-        }
     }
 });
 
-export const {setAuthorization, logOut} = authSlice.actions;
+export const { setAuthorization } = authSlice.actions;
 export const selectAuth = (state:RootState) => state.authorization.auth;
 export default authSlice.reducer;
